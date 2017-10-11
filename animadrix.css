@@ -1,0 +1,150 @@
+.smoke .brokenWords{
+	transform: scale(1);
+	filter: blur(0px);
+	opacity: 0;
+	animation: smoke .3s ease-in forwards;
+	display: inline-block;
+}
+
+.span-ibaro {
+	display: inline !important;
+}
+
+@keyframes smoke {
+	0% {
+		transform: scale(5);
+		filter: blur(5px);
+		opacity: 0;
+	}
+	25% {
+		transform: scale(3);
+		filter: blur(4px);
+		opacity: 0.3;
+	}
+
+	50% {
+		transform: scale(2);
+		filter: blur(3px);
+		opacity: 0.6;
+	}
+
+	75% {
+		transform: scale(1.6);
+		filter: blur(2px);
+		opacity: 0.8;
+	}
+	100% {
+		transform: scale(1);
+		filter: blur(0px);
+		opacity: 1;
+	}
+}
+
+.downUp {
+	overflow: hidden !important;
+}
+
+.downUp .brokenWords {
+	transform: translateY(350px);
+	transition: all .01s;
+	animation: downUping .09s linear forwards;
+	display: inline-block;
+}
+
+@keyframes downUping {
+	from {transform: translateY(1.3em);}
+	to {transform: translateY(0);}
+}
+
+
+.scale .brokenWords {
+	transform: scale(1.2);
+	display: inline-block;
+	animation: scaling .2s linear forwards;
+	perspective: 1000;
+	transform-style: preserve-3d;
+}
+
+@keyframes scaling {
+	0% {transform: scale(1.5);}
+	25% {transform: scale(2);}
+	50% {transform: scale(2.5);}
+	75% {transform: scale(1.5);}
+	100% {transform: scale(1);}
+}
+
+
+.center {
+	text-align: center;
+	justify-content: center;
+}
+
+.scaleFade .brokenWords {
+	transform: scale(5) rotateZ(-80deg);
+	opacity: 0;
+	display: inline-block;
+	animation: scaleFading .3s forwards;
+	perspective: 1000px;
+	transform-style: preserve-3d;
+	transform-origin: top;
+	
+}
+
+@keyframes scaleFading {
+	0% {transform: scale(5) translateX(-50px) rotateZ(-120deg);opacity: 0;filter: blur(.5px);}
+	50% {transform: scale(3) translateX(-30px) rotateZ(-60deg);opacity: .5;filter: blur(2px);}
+	100% {transform: scale(1) translateX(0px) rotateZ(0deg); opacity: 1; filter: blur(0px);}
+}
+
+.gelatine .brokenWords{
+	transform: rotateX(-90deg);
+	opacity: 0;
+	display: inline-block;
+	animation: gelating .3s forwards;
+	transform-origin: bottom;
+}
+
+@keyframes gelating {
+	0% {transform: rotateX(-90deg); opacity: 0;}
+	25% {transform: rotateX(-70deg); opacity: .3;}
+	50% {transform: rotateX(0deg); opacity: .6;}
+	75% {transform: rotateX(-45deg); opacity: .6;}
+	100% {transform: rotateX(0deg); opacity: 1;}
+}
+
+.split .brokenWords{
+	transform: rotateY(-90deg) scale(8) translateX(-50px);;
+	opacity: 0;
+	display: inline-block;
+	animation: split .3s forwards;
+	transform-origin: top;
+}
+
+@keyframes split {
+	0% {transform: rotateZ(-90deg) scale(.8) translateX(-50px); opacity: 0;}
+	25% {transform: rotateZ(-70deg) scale(.5) translateX(-30px); opacity: .3;}
+	50% {transform: rotateZ(0deg) scale(.3) translateX(-50px); opacity: .6;}
+	75% {transform: rotateZ(-45deg) scale(.2) translateX(-30px); opacity: .6;}
+	80% {transform: rotateZ(0deg) scale(1) translateX(0px); opacity: 1;}
+	90% {transform: rotateZ(0deg) scale(1) translateX(0px); opacity: 0;}
+	100% {transform: rotateZ(0deg) scale(1) translateX(0px); opacity: 1;}
+}
+
+.colorful .brokenWords {
+    display: inline-block;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transform: rotateZ(360deg) translateZ(-10px) scale(2);
+    opacity: 0;
+    transform-origin: top;
+    animation: colorfuling .3s linear forwards;
+}
+
+@keyframes colorfuling {
+	0% {transform:   rotateZ(40deg) translateZ(-10px) scale(2); opacity: .3; color: #f1bd1a;}
+	25% {transform:  rotateZ(30deg) translateZ(-100px) scale(1); opacity: .5; color: #14b19d;}
+	50% {transform:  rotateZ(20deg) translateZ(-10px) scale(1); opacity: .6; color: #f67300;}
+	75% {transform:  rotateZ(10deg) translateZ(-100px) scale(2); opacity: .7; color: #3f8fa8;}
+	100% {transform: rotateZ(0deg) translateZ(0px) scale(1); opacity: 1;}
+}
+
