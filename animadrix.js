@@ -1,28 +1,65 @@
-document.querySelectorAll('[brokenWords]').forEach( item => {
-	let arr = []
-	let time = parseInt(item.dataset.time) || 10
-	let delay = parseInt(item.dataset.delay)
-	
-	if (item.dataset.delay) {
-		let classes = item.className.split(' ')
-		item.className = ''
-		item.style.opacity = 0
+var AnimaDrix = function () {
+	this.element = document.querySelectorAll('[brokenWords]')
+	this.time = 10
+	this.delay = 0
+}
 
-		setTimeout(() => {
+AnimaDrix.prototype.includeSpaceOnSpan = function (_item) {
+	var _filter = Array.prototype.filter.call(_item.children, function (it) { return it.innerText === ''})
+	Array.prototype.map.call(_filter, function (that) {that.classList.add('span-ibaro')})
+}
 
-			classes.map(classes => item.classList.add(classes))
-			item.style.opacity = 1
-			let filter = Array.prototype.filter.call(item.children, it => it.innerText === '')
-			Array.prototype.map.call(filter, that => that.classList.add('span-ibaro'))
-		}, delay * 1000)
-	}
+AnimaDrix.prototype.init = function () {
+	var _context = this
+
+	Array.prototype.forEach.call(this.element, function (_item, i) {
+
+		var _delay = parseInt(_item.dataset.delay) || _context.delay
+		var _time = parseInt(_item.dataset.time) || _context.time
+		var span = []
+
+		if (_item.dataset.delay) {
+			var _classes = _item.className.split(' ')
+
+			_item.className = ''
+			_item.style.opacity = 0
+
+			setTimeout(function () {
+				_item.style.opacity = 1
+
+				_classes.map(function (_classes) { _item.classList.add(_classes) })
+				_context.includeSpaceOnSpan(_item)
+			}, _delay * 1000)
+		}
+
+		var _items = _item.textContent.trim().split('')
 
 
-	item.textContent.trim().split('').map((letter, i) => {
-		arr.push(`<span class="brokenWords" style="animation-delay: ${i/time}s;">${letter}</span>`)
-	});
+		Array.prototype.map.call(_items, function (letter, i) {
+			span.push('<span class="brokenWords" style="animation-delay: '+ i / _time + 's;">' + letter + '</span>')
+		})
 
-	item.innerHTML = arr.join('')
-	let filter = Array.prototype.filter.call(item.children, it => it.innerText === '')
-	Array.prototype.map.call(filter, that => that.classList.add('span-ibaro'))
-});
+		_item.innerHTML = span.join('')
+		_context.includeSpaceOnSpan(_item)
+	})
+}
+
+AnimaDrix.prototype.scrollAnima = function () {
+	var _bodyScroll = document.body.scrollTop
+	var _context = this
+
+	Array.prototype.forEach.call(this.element, function (_item) {
+		var _itemOffset = _item.offsetTop
+
+		if (_item.dataset.scroll) {
+			if (_bodyScroll >= _itemOffset) {
+
+			}
+		}
+	})
+}
+
+
+var animaDrix = new AnimaDrix()
+animaDrix.init()
+animaDrix.scrollAnima()
