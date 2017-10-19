@@ -43,18 +43,17 @@ AnimaDrix.prototype.init = function () {
     	var _svgText = _item.textContent
 	    var _itemStyle = window.getComputedStyle(_item)
 	    var _colorSvg = _itemStyle.getPropertyValue('color')
-	    var _x = 0
 
-	    if (_itemStyle.getPropertyValue('text-align') === 'center') {
-	    	_x = Math.floor(_item.offsetWidth / 3)
 
-	    	console.log(_item.offsetWidth * 0.5)
+      _item.innerHTML = '<svg id="brokenSvg"><text y="65" class="brokenWords">' + _svgText + '</text></svg>'
+      _context.includeSpaceOnSpanOrSvg(_item)
+	    
+
+      var _svg = _item.querySelector('svg text')
+
+      if (_itemStyle.getPropertyValue('text-align') === 'center') {
+	    	_svg.setAttribute('x', Math.floor(_item.clientWidth / 2) - Math.floor(_svg.clientWidth / 2))
 	    }
-
-	    _item.innerHTML = '<svg id="brokenSvg"><text x="' + _x + '" y="65" class="brokenWords">' + _svgText + '</text></svg>'
-	    _context.includeSpaceOnSpanOrSvg(_item)
-
-	    var _svg = _item.querySelector('svg text')
 
 	    _svg.setAttribute('style', 'stroke:' + _colorSvg + ';')
 
